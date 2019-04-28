@@ -4,9 +4,10 @@ import databases.ConnectToSqlDB;
 
 import java.util.List;
 import java.util.Random;
+import java.util.SortedMap;
 
 public class Numbers {
-
+    long executingTime = 0;
     /*
      * Show all the different kind of sorting algorithm by applying into (num array).
      * Display the execution time for each sorting.Example in below.
@@ -41,6 +42,37 @@ public class Numbers {
 
 
         //Come to conclusion about which Sorting Algo is better in given data set.
+        //Bubble Sort
+        randomize(num, n);
+        algo.bubbleSort(num);
+        long bubbleSortExecutionTime = algo.executionTime;
+        System.out.println("Total Execution Time of " + num.length + "numbers in bubble Sort take: " + bubbleSortExecutionTime + "milli sec");
+
+        //Merge Sort
+        randomize(num, n);
+        algo.mergeSort(num, 0, n - 1);
+        long mergeSortExecutionTime = algo.executionTime;
+        System.out.println("Total Execution Time of " + num.length + "numbers in Merge Sort take:" + mergeSortExecutionTime + "milli sec");
+
+        //Quick Sort
+        randomize(num, n);
+        algo.quickSort(num, 0, n - 1);
+        long quickSortExecutionTime = algo.executionTime;
+        System.out.println("Total Execution Time of" + num.length + "numbers in Quick Sort take:" + quickSortExecutionTime + "milli sec");
+
+        // Heap Sort
+        randomize(num, n);
+        algo.heapSort(num, n);
+        int maxValueForBucketSort = num[num.length - 1];
+        long heapSortExecutionTime = algo.executionTime;
+        System.out.println("Total Execution Time of" + num.length + "numbers in Heap Sort take: " + heapSortExecutionTime + "milli sec");
+
+        // Bucket sort
+        randomize(num, n);
+        algo.bucketSort(num, maxValueForBucketSort);
+        long bucketSortExecutionTime = algo.executionTime;
+        System.out.println("Total Execution Time of " + num.length + "numbers in Bucket sort take: " + bubbleSortExecutionTime + "milli sec");
+
 
     }
 
@@ -48,7 +80,19 @@ public class Numbers {
         Random rand = new Random();
         for (int i = 0; i < num.length; i++) {
             num[i] = rand.nextInt(1000000);
+            Numbers numbers = new Numbers();
+            numbers.numbers(num);
+            System.out.println("SortedNum : ");
+            for (int a = 0; a < num.length; a++) {
+                System.out.println(num[a] + " ");
+            }
+            System.out.println();
+            System.out.println("Executing Time : " + numbers.executingTime);
+
         }
+    }
+
+    public void numbers(int[] num) {
     }
 
     public static void randomize(int arr[], int n) {

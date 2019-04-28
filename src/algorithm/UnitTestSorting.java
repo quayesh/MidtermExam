@@ -13,8 +13,10 @@ public class UnitTestSorting {
         //Create Sort object
         Sort sort = new Sort();
         //apply unsorted array to selectionSort.
+        unSortedArray = new int[]{6, 9, 2, 5, 1, 0, 4};
         sort.selectionSort(unSortedArray);
         //verify if the unsorted array is sorted by the selection sort algorithm.
+
         try {
             Assert.assertEquals(sortedArray, unSortedArray, "Array is not Sorted");
         } catch (Exception ex) {
@@ -22,7 +24,53 @@ public class UnitTestSorting {
         }
 
         //Now implement Unit test for rest of the soring algorithm...................below
-
-
+        // Bubble Sort
+        unSortedArray = new int[]{6, 9, 2, 5, 1, 0, 4};
+        sort.bubbleSort(unSortedArray);
+        try {
+            Assert.assertEquals(sortedArray, unSortedArray, "Array is not Sorted");
+        } catch (Exception ex) {
+            ex.getMessage();
+        }
+        // Insertion Sort
+        unSortedArray = new int[]{6, 9, 2, 5, 1, 0, 4};
+        sort.insertionSort(unSortedArray);
+        try {
+            Assert.assertEquals(sortedArray, unSortedArray, "Array is not Sorted");
+        } catch (Exception ex) {
+            ex.getMessage();
+        }
+        // merge Sort
+        unSortedArray = new int[]{6, 9, 2, 5, 1, 0, 4};
+        sort.mergeSort(unSortedArray, 0, unSortedArray.length - 1);
+        try {
+            Assert.assertEquals(sortedArray, unSortedArray, "Array is not Sorted");
+        } catch (Exception ex) {
+            ex.getMessage();
+        }
+        // Quick sort
+        unSortedArray = new int[]{6, 9, 2, 5, 1, 0, 4};
+        sort.quickSort(unSortedArray, 0, unSortedArray.length - 1);
+        try {
+            Assert.assertEquals(sortedArray, unSortedArray, "Array is not Sorted");
+        } catch (Exception ex) {
+            ex.getMessage();
+        }
+        // Heap Sort
+        unSortedArray = new int[]{6, 9, 2, 5, 1, 0, 4};
+        sort.heapSort(unSortedArray, unSortedArray.length);
+        try {
+            Assert.assertEquals(sortedArray, unSortedArray, "Array is not Sorted");
+        } catch (Exception ex) {
+            ex.getMessage();
+        }
+        // Bucket Sort
+        unSortedArray = new int[]{6, 9, 2, 5, 1, 0, 4};
+        sort.bucketSort(unSortedArray, 9);
+        try {
+            Assert.assertEquals(sortedArray, unSortedArray, "Array is not Sorted");
+        } catch (Exception ex) {
+            ex.getMessage();
+        }
     }
 }

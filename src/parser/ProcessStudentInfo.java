@@ -20,7 +20,7 @@ public class ProcessStudentInfo {
      * Here in the main method fill in the code that outlined to read xml data parsed into 2 separate ArrayList, then store into map.
      * Once map has all data, retrieve those data and out put to console.
      *
-     * Do any necessary steps that require for below successful output.
+     * Do any necessary steps that require for below succ List<Student> stList = connectToMongoDB.readStudentListFromMongoDB("qtp");essful output.
      * ......................................................
      * Student (id= 1) "Ibrahim" "Khan"        		Grade= B
      * Student (id= 2) "Asif" "Roni"          		Grade= A
@@ -56,6 +56,33 @@ public class ProcessStudentInfo {
 
         //Parse Data using parseData method and then store data into Selenium ArrayList.
         seleniumStudents = xmlReader.parseData(tag, pathSelenium);
+        qtpStudents = xmlReader.parseData(tag, pathQtp);
+        list.put("qtp", qtpStudents);
+        list.put("selenium", seleniumStudents);
+        for (Map.Entry<String, List<Student>> print : list.entrySet()) {
+            List<Student> studentList = (List<Student>) list.get(print.getKey());
+            System.out.println("\nPortfolio of Student of " + print.getKey() + "classes :\n");
+            for (Student studentprofile : studentList) {
+                String id = studentprofile.getId();
+                String firstname = studentprofile.getFirstName();
+                String lastname = studentprofile.getLastName();
+                String grade = studentprofile.getScore();
+                System.out.println("Students (id= " + id + ")" + firstname + "" + lastname + "grade=" + grade);
+            }
+        }
+        for (Map.Entry<String, List<Student>> print : list.entrySet()) {
+            List<Student> studentList = (List<Student>) list.get(print.getKey());
+            System.out.println("\nPortfolio of Student of" + print.getKey() + "classes :\n");
+            for (Student studentprofile : studentList) {
+                String id = studentprofile.getId();
+                String firstname = studentprofile.getFirstName();
+                String lastname = studentprofile.getLastName();
+                String grade = studentprofile.getScore();
+                System.out.println("Students(id=" + id + ")" + firstname + "" + lastname + "grade=" + grade);
+            }
+
+        }
+
 
         //Parse Data using parseData method and then store data into Qtp ArrayList.
 
@@ -80,6 +107,10 @@ public class ProcessStudentInfo {
         }
 
         //Retrieve Selenium students from Database
+        List<Student> seList = connectToMongoDB.readStudentListFromMongoDB("qtp");
+        for (Student st : stList) {
+            System.out.println(st.getId() + " " + st.getFirstName() + " " + st.getLastName() + " " + st.getScore() + " ");
+        }
 
 
     }
